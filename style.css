@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
+:root {
+  --pink: #f05c91;
+  --deep: #6d2948;
+  --soft: #fff0f5;
+  --line: rgba(240, 92, 145, .25);
+}
+* { box-sizing: border-box; }
+html { min-height: 100%; }
+body {
+  margin: 0; min-height: 100vh; padding: 28px 16px;
+  display: grid; place-items: center; overflow-x: hidden;
+  color: var(--deep); font-family: "DM Sans", system-ui, sans-serif;
+  background: radial-gradient(circle at 20% 20%, #ffe1ec 0, transparent 32%),
+              radial-gradient(circle at 85% 80%, #fbd9e9 0, transparent 34%),
+              linear-gradient(135deg, #fff9fb, var(--soft));
+}
+.glow { position: fixed; width: 220px; height: 220px; border-radius: 50%; filter: blur(50px); opacity: .42; pointer-events: none; }
+.glow-one { background: #ffb4d0; top: 4%; left: -70px; }
+.glow-two { background: #ffd5e5; bottom: 0; right: -70px; }
+.card {
+  position: relative; width: min(100%, 480px); padding: 34px 26px 28px;
+  text-align: center; border: 1px solid rgba(255,255,255,.9);
+  border-radius: 30px; background: rgba(255,255,255,.72);
+  box-shadow: 0 24px 70px rgba(139, 54, 91, .13);
+  backdrop-filter: blur(12px); animation: appear .7s ease both;
+}
+.top-heart { position: absolute; top: 17px; right: 22px; font-size: 28px; color: var(--pink); }
+.eyebrow { margin: 10px 0 12px; color: #b46c89; font-size: 10px; font-weight: 700; letter-spacing: .22em; }
+h1 { margin: 0; font: 700 clamp(34px, 8vw, 45px)/1.12 "Playfair Display", Georgia, serif; letter-spacing: -.04em; }
+.pink { color: var(--pink); }
+.intro { max-width: 310px; margin: 16px auto 0; color: #98627a; line-height: 1.7; font-size: 14px; }
+.heart-scene { height: 178px; margin: 8px auto 2px; display: grid; place-items: center; position: relative; }
+.heart { color: var(--pink); font-size: 105px; line-height: 1; text-shadow: 0 12px 28px rgba(240,92,145,.25); animation: beat 1.45s ease-in-out infinite; }
+.spark { position: absolute; color: #eaa1bc; font-size: 25px; animation: twinkle 2s ease-in-out infinite; }
+.spark-a { top: 27px; left: 24%; }
+.spark-b { top: 54px; right: 20%; animation-delay: .6s; }
+.spark-c { bottom: 25px; left: 29%; animation-delay: 1s; }
+.message { margin: 0 auto 22px; max-width: 320px; min-height: 44px; font: 600 17px/1.55 "Playfair Display", Georgia, serif; }
+button {
+  appearance: none; border: 1.5px solid var(--pink); border-radius: 999px;
+  padding: 13px 22px; background: #fff; color: #c63e75; font: 700 13px "DM Sans", sans-serif;
+  cursor: pointer; box-shadow: 0 7px 0 rgba(240,92,145,.12);
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+}
+button span { font-size: 17px; margin-left: 6px; vertical-align: -1px; }
+button:hover { background: #fff3f8; transform: translateY(-2px); box-shadow: 0 9px 0 rgba(240,92,145,.12); }
+button:active { transform: translateY(3px) scale(.98); box-shadow: 0 2px 0 rgba(240,92,145,.12); }
+button:focus-visible { outline: 3px solid #f7a9c7; outline-offset: 4px; }
+.tiny-note { margin: 20px 0 0; color: #b28a9b; font-size: 11px; }
+footer { position: relative; margin-top: 18px; color: #a66b84; font-size: 11px; letter-spacing: .04em; }
+footer span { color: var(--pink); }
+.float-heart { position: fixed; bottom: -30px; z-index: 5; pointer-events: none; color: var(--pink); animation: float-up 2.8s ease-in forwards; }
+@keyframes beat { 0%,100% { transform: scale(1); } 14% { transform: scale(1.09); } 28% { transform: scale(1); } 42% { transform: scale(1.06); } }
+@keyframes twinkle { 0%,100% { opacity: .5; transform: scale(.8) rotate(0); } 50% { opacity: 1; transform: scale(1.15) rotate(12deg); } }
+@keyframes appear { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes float-up { to { transform: translateY(-110vh) rotate(25deg); opacity: 0; } }
+@media (max-width: 380px) { .card { padding: 30px 18px 24px; } .heart-scene { height: 150px; } .heart { font-size: 88px; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; } }
